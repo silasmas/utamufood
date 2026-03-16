@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Utamu Food - Bientôt Disponible</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000;
+    color: white;
+    min-height: 100vh;
+}
+
+/* Bannière transparente */
+.banner {
+    position: relative;
+    min-height: 420px;
+    background: url('assets/Utamu-Food-arrive-bientot.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+}
+
+.banner .banner-logo {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    z-index: 2;
+}
+
+.banner .banner-logo img {
+    width: 140px;
+    height: auto;
+}
+
+.banner .social-links {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    gap: 12px;
+    z-index: 2;
+}
+
+.banner .social-links a {
+    color: #fff;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+    text-decoration: underline;
+}
+
+.banner .social-links a:hover {
+    opacity: 1;
+}
+
+/* Section principale - disposition 2 colonnes */
+.main-section {
+    display: flex;
+    max-width: 1200px;
+    margin: 50px auto 0;
+    min-height: 60vh;
+    align-items: stretch;
+}
+
+/* Colonne gauche - illustration */
+.illustration-col {
+    flex: 1;
+    min-width: 45%;
+    min-height: 450px;
+    background: #000;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.illustration-col img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    object-fit: cover;
+    object-position: left center;
+}
+
+/* Colonne droite - contenu */
+.content-col {
+    flex: 1;
+    min-width: 45%;
+    padding: 40px 60px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-col h2 {
+    font-size: 32px;
+    margin: 0 0 20px 0;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.content-col > p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #ddd;
+    margin: 0 0 25px 0;
+}
+
+/* Cartes de services */
+.services {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.services li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    background: rgba(128, 112, 247, 0.2);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.services li .icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: #8070F7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.btn {
+    margin-top: 35px;
+}
+
+.btn a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 35px;
+    background: #d4af37;
+    color: #000;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.btn a:hover {
+    background: #fff;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 15px 0;
+}
+
+.footer-social a {
+    color: #aaa;
+    font-size: 18px;
+    text-decoration: underline;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #fff;
+}
+
+.footer-designed {
+    margin-top: 15px;
+}
+
+.footer-designed a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+.footer-designed a:hover {
+    text-decoration: underline;
+}
+
+/* Bouton WhatsApp flottant */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+}
+
+.whatsapp-float a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.whatsapp-float a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .banner .social-links {
+        right: 15px;
+        top: 15px;
+    }
+
+    .banner .banner-logo {
+        left: 15px;
+        top: 15px;
+    }
+
+    .banner .banner-logo img {
+        width: 110px;
+    }
+    .main-section {
+        flex-direction: column;
+    }
+
+    .illustration-col {
+        min-height: 300px;
+    }
+
+    .content-col {
+        padding: 30px 25px 40px;
+    }
+
+    .content-col h2 {
+        font-size: 26px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="banner">
+    <div class="banner-logo">
+        <img src="assets/WhatsApp%20Image%202026-03-15%20at%2021.59.10.jpeg" alt="Utamu Food">
+    </div>
+    <div class="social-links">
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+</section>
+
+<section class="main-section">
+    <div class="illustration-col">
+        <img src="assets/meAfN3nlFyrqgcqq3Sc70.png" alt="Chef cuisinière">
+    </div>
+
+    <div class="content-col">
+        <h2>Nous préparons quelque chose de délicieux pour vous.</h2>
+
+        <p>
+            Notre site est en cours de construction et vous permettra bientôt de découvrir plusieurs services liés à la restauration :
+        </p>
+
+        <ul class="services">
+            <li><span class="icon">🍕</span> Commande de plats</li>
+            <li><span class="icon">📋</span> Découverte de menus</li>
+            <li><span class="icon">👨‍🍳</span> Services culinaires</li>
+            <li><span class="icon">✨</span> Et bien plus encore…</li>
+        </ul>
+
+        <div class="btn">
+            <a href="https://wa.me/243815636402" target="_blank" rel="noopener">Nous contacter</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-social">
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+    © 2026 Utamu Food – Tous droits réservés
+    <div class="footer-designed">
+        Designed by : <a href="https://silasmas.com" target="_blank" rel="noopener">SDEV</a>
+    </div>
+</footer>
+
+<div class="whatsapp-float">
+    <a href="https://wa.me/243815636402" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+</div>
+
+</body>
+</html>
